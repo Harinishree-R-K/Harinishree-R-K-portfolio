@@ -152,7 +152,6 @@
             <div class="relative flex justify-center md:justify-end slide-in-right">
                 <div class="relative">
                     <div class="absolute inset-0 bg-accent/20 rounded-full animate-ping" style="animation-duration: 3s;"></div>
-                    <!-- REPLACE THIS SRC WITH YOUR ACTUAL PHOTO URL -->
                     <img src="profile.jpg" 
                          alt="Harinishree R K" 
                          class="relative w-64 h-64 md:w-72 md:h-72 object-cover rounded-full border-4 border-surface shadow-2xl">
@@ -166,6 +165,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- Subtle interaction hint to naturally trigger the audio -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 text-xs tracking-widest uppercase animate-pulse pointer-events-none">
+            <span>Tap anywhere or scroll to explore</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
     </section>
 
     <!-- About Section -->
@@ -407,7 +413,7 @@
                 const utterance = new SpeechSynthesisUtterance(introText);
                 
                 // 1.2 is fast but natural and soft. (Note: 2.5 is too fast and sounds robotic/chipmunk-like).
-                utterance.rate = 1.5;  
+                utterance.rate = 1.0;  
                 utterance.pitch = 1.35; // Slightly higher, softer tone
                 
                 utterance.onend = () => {
