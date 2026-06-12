@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harinishree R K | Applied AI Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        accent: '#3b82f6',
+                        surface: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Standard Fade In - Slowed down to 2.0s for a very smooth, cinematic feel */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 2.0s ease-out, transform 2.0s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Neat Slide from Left - Slowed down to 2.0s */
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 2.0s cubic-bezier(0.2, 0.8, 0.2, 1), transform 2.0s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .slide-in-left.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Neat Slide from Right - Slowed down to 2.0s */
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 2.0s cubic-bezier(0.2, 0.8, 0.2, 1), transform 2.0s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .slide-in-right.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Staggered Animation for Grid Items - Slowed down to 1.5s */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+        }
+        .stagger-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Stagger delays remain the same, creating a beautiful, slow waterfall effect */
+        .stagger-container .stagger-item:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-container .stagger-item:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-container .stagger-item:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-container .stagger-item:nth-child(4) { transition-delay: 0.4s; }
+        .stagger-container .stagger-item:nth-child(5) { transition-delay: 0.5s; }
+        .stagger-container .stagger-item:nth-child(6) { transition-delay: 0.6s; }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-primary text-slate-300 font-sans antialiased selection:bg-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-primary/95 backdrop-blur-sm border-b border-slate-800 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold text-white">RKHS<span class="text-accent">.ai</span></div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-accent transition-colors">About</a>
+                    <a href="#experience" class="hover:text-accent transition-colors">Experience</a>
+                    <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
+                    <a href="#education" class="hover:text-accent transition-colors">Education</a>
+                    <a href="#contact" class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-blue-600 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <!-- Slide in from Left -->
+            <div class="space-y-6 slide-in-left">
+                <div class="inline-flex items-center px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-sm font-medium">
+                    <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                    Available for Immediate Joining
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                    Building <span class="gradient-text">Production-Grade</span><br>
+                    Edge AI & Agentic Systems
+                </h1>
+                <p class="text-lg text-slate-400 h-16">
+                    <span id="typewriter" class="typing-cursor"></span>
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#projects" class="px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-blue-600 transition shadow-lg shadow-accent/20">
+                        View Projects
+                    </a>
+                    <a href="https://github.com/Harinishree-R-K" target="_blank" class="px-6 py-3 bg-surface text-white border border-slate-700 font-semibold rounded-lg hover:bg-slate-800 transition flex items-center gap-2">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/harinishree-ramesh-88b08a24a/" target="_blank" class="px-6 py-3 bg-surface text-white border border-slate-700 font-semibold rounded-lg hover:bg-slate-800 transition flex items-center gap-2">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- Slide in from Right -->
+            <div class="relative flex justify-center md:justify-end slide-in-right">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-accent/20 rounded-full animate-ping" style="animation-duration: 3s;"></div>
+                    <!-- REPLACE THIS SRC WITH YOUR ACTUAL PHOTO URL -->
+                    <img src="profile.jpg" 
+                         alt="Harinishree R K" 
+                         class="relative w-64 h-64 md:w-72 md:h-72 object-cover rounded-full border-4 border-surface shadow-2xl">
+                    
+                    <div class="absolute -bottom-4 -left-4 glass-card px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold text-white">
+                        <i class="fas fa-microchip text-accent"></i> Edge AI
+                    </div>
+                    <div class="absolute top-4 -right-4 glass-card px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold text-white">
+                        <i class="fas fa-robot text-purple-400"></i> Agentic RAG
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3 slide-in-left">
+            <i class="fas fa-user-astronaut text-accent"></i> About Me
+        </h2>
+        
+        <!-- About text slides from left -->
+        <div class="space-y-4 text-slate-400 leading-relaxed text-lg max-w-4xl slide-in-left">
+            <p>
+                Production-focused AI/ML Engineer specializing in Edge AI, Agentic RAG pipelines, and scalable LLM infrastructure. 
+                I bridge the gap between cutting-edge research and deterministic, thread-safe production systems.
+            </p>
+            <p>
+                Proven track record of deploying quantized models on constrained hardware (NVIDIA Jetson), reducing inference latency by 30%, 
+                and cutting LLM hallucination rates by 50% via rigorous LLMOps evaluation (RAGAS). Inventor of a filed patent 
+                in AI-driven cognitive automation, with a strong focus on building reliable, scalable, and genuinely useful AI.
+            </p>
+        </div>
+        
+        <!-- Core Skills Heading slides from right -->
+        <h3 class="text-xl font-bold text-white mb-6 mt-12 flex items-center gap-2 slide-in-right">
+            <i class="fas fa-layer-group text-accent"></i> Core Skills
+        </h3>
+
+        <!-- Core Skills with Staggered Cascade Animation -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-container">
+            <div class="glass-card p-5 rounded-xl stagger-item">
+                <h4 class="text-accent font-semibold mb-2 flex items-center gap-2"><i class="fas fa-brain"></i> LLM & GenAI</h4>
+                <p class="text-slate-400 text-sm">LangChain, LangGraph, LlamaIndex, RAG, Agentic AI, Prompt Engineering, Grounding, Fine-tuning (LoRA/QLoRA)</p>
+            </div>
+            <div class="glass-card p-5 rounded-xl stagger-item">
+                <h4 class="text-accent font-semibold mb-2 flex items-center gap-2"><i class="fas fa-code"></i> Frameworks & DBs</h4>
+                <p class="text-slate-400 text-sm">Hugging Face, PyTorch, TensorFlow, FastAPI, ChromaDB, FAISS, Pinecone, Qdrant, MongoDB, MySQL</p>
+            </div>
+            <div class="glass-card p-5 rounded-xl stagger-item">
+                <h4 class="text-accent font-semibold mb-2 flex items-center gap-2"><i class="fas fa-microchip"></i> Edge AI & Multimodal</h4>
+                <p class="text-slate-400 text-sm">NVIDIA Jetson, Faster-Whisper, Kokoro TTS, ALSA/PulseAudio Routing, Voice Activity Detection (VAD)</p>
+            </div>
+            <div class="glass-card p-5 rounded-xl stagger-item">
+                <h4 class="text-accent font-semibold mb-2 flex items-center gap-2"><i class="fas fa-cloud"></i> LLMOps, Cloud & Infra</h4>
+                <p class="text-slate-400 text-sm">Docker, AWS, REST APIs, Microservices, Model Versioning, AI Observability, Quantization (int8_float16)</p>
+            </div>
+            <div class="glass-card p-5 rounded-xl sm:col-span-2 lg:col-span-2 stagger-item">
+                <h4 class="text-accent font-semibold mb-2 flex items-center gap-2"><i class="fas fa-shield-alt"></i> Responsible AI & Languages</h4>
+                <p class="text-slate-400 text-sm">Python, DSA, AI Ethics & Governance, Security & Compliance, AI Evaluation Pipelines, Streamlit, Gradio</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-surface/30 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3 slide-in-left">
+                <i class="fas fa-briefcase text-accent"></i> Experience
+            </h2>
+            <div class="space-y-8">
+                <!-- RobotoAI: Slides from Left -->
+                <div class="glass-card p-8 rounded-xl hover:border-accent/50 transition-colors slide-in-left">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">AI/ML Engineer</h3>
+                            <p class="text-accent font-medium">RobotoAI</p>
+                        </div>
+                        <div class="text-slate-400 text-sm mt-2 md:mt-0 text-right">
+                            <p>Jun 2024 – Jan 2025</p>
+                            <p>Coimbatore, India</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-slate-400 list-disc list-inside marker:text-accent">
+                        <li>Reduced hallucinated AI responses by 50% (improving RAGAS faithfulness from 0.60 to 0.85) via grounding techniques and end-to-end LLMOps evaluation pipelines.</li>
+                        <li>Engineered Agentic RAG pipelines using LangChain and ChromaDB, cutting irrelevant retrievals by 20% and boosting precision by 15%.</li>
+                        <li>Accelerated real-time LLM inference, reducing p95 API latency by 200ms and improving throughput by 30% via async FastAPI pipelines.</li>
+                        <li><span class="text-white font-semibold">Architected Real-Time Edge Voice-to-Action Robot:</span> Utilized Faster-Whisper (distil-large-v3) with int8_float16 quantization on NVIDIA Jetson, reducing VRAM footprint by ~40% while maintaining &lt;800ms latency, integrated with Kokoro TTS and ALSA routing.</li>
+                    </ul>
+                </div>
+                
+                <!-- Intrino: Slides from Right -->
+                <div class="glass-card p-8 rounded-xl hover:border-accent/50 transition-colors slide-in-right">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">AI & Robotics Intern</h3>
+                            <p class="text-accent font-medium">Intrino</p>
+                        </div>
+                        <div class="text-slate-400 text-sm mt-2 md:mt-0 text-right">
+                            <p>Jun 2024 – Aug 2024</p>
+                            <p>Coimbatore, India</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-slate-400 list-disc list-inside marker:text-accent">
+                        <li>Designed AI-driven robotic automation workflows using RoboDK and Gazebo, contributing to two production-ready robotic system prototypes.</li>
+                        <li>Bridged AI and hardware control systems, gaining hands-on experience in intelligent automation pipelines underpinning industrial AI deployments.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3 slide-in-right">
+            <i class="fas fa-code-branch text-accent"></i> Featured Projects
+        </h2>
+        <!-- Projects with Staggered Cascade Animation -->
+        <div class="grid md:grid-cols-2 gap-8 stagger-container">
+            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition-transform duration-300 border-l-4 border-l-yellow-500 stagger-item">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-white">Neuro TalkPlot: Speech-to-CNC Automation</h3>
+                    <span class="px-2 py-1 bg-yellow-500/10 text-yellow-400 text-xs font-bold rounded border border-yellow-500/20">PATENT FILED</span>
+                </div>
+                <p class="text-slate-400 mb-4 text-sm">
+                    Invented and patented an end-to-end AI cognitive automation system converting spoken input into CNC G-code via Speech-to-Text API, enabling real-time hands-free robotic writing with zero manual intervention.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">Google STT</span>
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">Arduino</span>
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">CNC Plotter</span>
+                </div>
+                <p class="text-yellow-400/80 text-xs font-semibold mb-4">Patent App. No: 202541086192 A</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition-transform duration-300 border-l-4 border-l-blue-500 stagger-item">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-white">MarketIntel: Agricultural Decision Intelligence</h3>
+                    <span class="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold rounded border border-blue-500/20">IEEE PUBLISHED</span>
+                </div>
+                <p class="text-slate-400 mb-4 text-sm">
+                    Published peer-reviewed research at the 11th IEEE ICACCS. Built a predictive analytics platform combining NLP conversational AI, ARIMA forecasting, vector semantic search, and real-time market data pipelines.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">FastAPI</span>
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">FAISS</span>
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">ARIMA</span>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition-transform duration-300 border-l-4 border-l-purple-500 stagger-item">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-white">Gemini RAG Chatbot: Context-Aware AI</h3>
+                </div>
+                <p class="text-slate-400 mb-4 text-sm">
+                    Architected and deployed a production conversational AI system with multi-document RAG orchestration, semantic retrieval, and real-time inference, improving response relevance across long-context queries.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">Gemini API</span>
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">LangChain</span>
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">ChromaDB</span>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition-transform duration-300 border-l-4 border-l-emerald-500 stagger-item">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-white">Lexi-Guide: Legal Domain AI Advisor</h3>
+                </div>
+                <p class="text-slate-400 mb-4 text-sm">
+                    Built a domain-specialized legal chatbot with RAG-powered contract and IP retrieval, significantly reducing information lookup time for non-expert users navigating complex legal documents.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">Python</span>
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">FastAPI</span>
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">LangChain</span>
+                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">ChromaDB</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications Section -->
+    <section id="education" class="py-20 bg-surface/30 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3 slide-in-left">
+                <i class="fas fa-graduation-cap text-accent"></i> Education & Certifications
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card p-6 rounded-xl slide-in-left">
+                    <h3 class="text-lg font-bold text-white mb-2">B.E. Computer Science Engineering (AI/ML)</h3>
+                    <p class="text-accent font-medium mb-1">Sri Eshwar College of Engineering</p>
+                    <p class="text-slate-400 text-sm">2022 – 2026 &nbsp;|&nbsp; CGPA: 8.5 / 10</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl slide-in-right">
+                    <h3 class="text-lg font-bold text-white mb-4">Certifications</h3>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-certificate text-accent"></i> AWS Cloud Quest: Cloud Practitioner (2024)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-certificate text-accent"></i> Basics of Cloud Computing – Coursera (2023)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-certificate text-accent"></i> Mastering Data Structures and Algorithm – Udemy (2023)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-white mb-6 slide-in-left">Let's Build the Future of AI</h2>
+        <p class="text-slate-400 mb-8 slide-in-left">I am currently seeking roles where I can architect and scale next-generation Agentic AI and Edge AI systems. Let's connect.</p>
+        <div class="flex flex-col md:flex-row justify-center gap-6 slide-in-right">
+            <a href="/cdn-cgi/l/email-protection#f1999083989f988299839494c1c7c1c4b1969c90989ddf929e9c" class="flex items-center justify-center gap-2 px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-blue-600 transition">
+                <i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="bbd3dac9d2d5d2c8d3c9dede8b8d8b8efbdcd6dad2d795d8d4d6">[email&#160;protected]</span>
+            </a>
+            <a href="tel:+917305979960" class="flex items-center justify-center gap-2 px-6 py-3 bg-surface text-white border border-slate-700 font-semibold rounded-lg hover:bg-slate-800 transition">
+                <i class="fas fa-phone"></i> +91 7305979960
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-primary border-t border-slate-800 py-8 text-center text-sm text-slate-500">
+        <p>© 2024 Harinishree R K. </p>
+    </footer>
+
+    <!-- Simple, Native JavaScript -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // 1. Typewriter Effect
+        const textToType = "Applied AI Engineer | Generative AI & Edge AI Specialist | Patent Published Researcher";
+        const typeWriterElement = document.getElementById('typewriter');
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                typeWriterElement.innerHTML += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        // 2. Voice Intro Logic (Auto-play, Scroll-to-stop, Never speak again)
+        let hasSpoken = false;
+
+        function playIntro() {
+            if ('speechSynthesis' in window && !hasSpoken) {
+                window.speechSynthesis.cancel();
+                
+                // Corrected spacing and full "Artificial Intelligence" phrasing for maximum professionalism
+                const introText = "Hi, I'm Harini shree, an Applied A I Engineer focused on building intelligent systems that transform Artificial Intelligence research into real-world impact. " +
+                                  "Driven by a curiosity for how machines learn and reason, I've built Agentic RAG systems, conversational A I, and automation-driven applications. " +
+                                  "I enjoy solving challenges across retrieval, reasoning, and deployment to create A I that is reliable, scalable, and genuinely useful. " +
+                                  "My goal is to build A I systems that move beyond demos and become tools people can trust. Welcome to my portfolio.";
+                
+                const utterance = new SpeechSynthesisUtterance(introText);
+                
+                // 1.2 is fast but natural and soft. (Note: 2.5 is too fast and sounds robotic/chipmunk-like).
+                utterance.rate = 2.5;  
+                utterance.pitch = 1.35; // Slightly higher, softer tone
+                
+                utterance.onend = () => {
+                    hasSpoken = true;
+                };
+
+                // Aggressively hunt for "Isabella" first, then soft Indian/female English voices
+                const voices = window.speechSynthesis.getVoices();
+                const preferredVoice = voices.find(v => v.name.toLowerCase().includes('isabella')) ||
+                                       voices.find(v => v.lang.includes('en-IN') && (v.name.includes('Female') || v.name.includes('Lekha') || v.name.includes('Heera') || v.name.includes('Veena') || v.name.includes('Indira'))) ||
+                                       voices.find(v => v.lang.includes('en-IN')) ||
+                                       voices.find(v => v.name.includes('Female') && v.lang.includes('en')) ||
+                                       voices.find(v => v.lang === 'en-US') ||
+                                       voices[0];
+                
+                if (preferredVoice) {
+                    utterance.voice = preferredVoice;
+                }
+                
+                try {
+                    window.speechSynthesis.speak(utterance);
+                } catch (e) {
+                    console.log("Autoplay blocked by browser. User interaction required.");
+                }
+            }
+        }
+
+        // Ensure voices are loaded (Chrome quirk)
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = () => {};
+        }
+
+        // 3. Scroll Listener: Stop speaking immediately and NEVER speak again
+        window.addEventListener('scroll', () => {
+            if (!hasSpoken && window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                hasSpoken = true; // Permanently disable for this session
+            }
+        });
+
+        // Also trigger on first click if autoplay was blocked
+        window.addEventListener('click', () => {
+            if (!hasSpoken && !window.speechSynthesis.speaking) {
+                playIntro();
+            }
+        }, { once: true });
+
+        // 4. Advanced Scroll Animations (Fade, Slide Left, Slide Right, Stagger)
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.15 }); // 0.15 triggers slightly earlier for smoother feel
+
+            document.querySelectorAll('.fade-in-section, .slide-in-left, .slide-in-right, .stagger-item').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Initialize on load
+        window.onload = () => {
+            typeWriter();
+            initScrollAnimations();
+            playIntro(); // Attempt autoplay immediately
+        };
+    </script>
+</body>
+</html>
